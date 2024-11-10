@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 from PIL import Image, ImageOps, ImageFont, ImageDraw
 from openai import OpenAI
+from pathlib import Path
 from requests import get
 from os import getenv
 
@@ -52,7 +53,7 @@ class Generator:
         )
 
     def _draw_phrase(self, image):
-        font = ImageFont.truetype('assets/fonts/Oswald-Medium.ttf', 16)
+        font = ImageFont.truetype(f'{Path(__file__).parent}/assets/fonts/Oswald-Medium.ttf', 16)
 
         draw = ImageDraw.Draw(image)
 
