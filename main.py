@@ -9,9 +9,7 @@ file_path = f'storage/{date.today()}.webp'
 # check if we have to generate a new image
 if not path.exists(file_path):
     try:
-        phrase = 'a horse walks into a bar'
-
-        image = Generator().generate(phrase)
+        image = Generator().generate()
         image.save(file_path, 'WEBP')
     except:
         print('Could not generate a new image')

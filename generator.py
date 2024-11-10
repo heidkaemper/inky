@@ -12,25 +12,36 @@ class Generator:
             api_key = getenv('OPENAI_API_KEY')
         )
 
-    def generate(self, phrase):
-        self.phrase = phrase
+    def generate(self):
+        chat_response = self.openai_client.chat.completions.create(
+            messages=[{
+                'role': 'user',
+                'content': self._get_phrase_prompt(),
+            }],
+            model='gpt-4o-mini',
+        )
 
-        response = self.openai_client.images.generate(
+        self.phrase = chat_response.choices[0].message.content
+
+        image_response = self.openai_client.images.generate(
             model='dall-e-3',
-            prompt=self._get_prompt(),
+            prompt=self._get_image_prompt(),
             size='1792x1024',
             quality='standard',
             response_format='url',
         )
 
-        image = Image.open(get(response.data[0].url, stream=True).raw)
+        image = Image.open(get(image_response.data[0].url, stream=True).raw)
         image = self._resize_image(image)
         image = self._draw_phrase(image)
 
         return image
 
-    def _get_prompt(self):
-        return f'create a humorous picture without text based on the phrase „{self.phrase}“. white background, in popart style. only use the following hex color codes to create the image: #000000 #ffffff #00ff00 #0000ff #ff0000 #ffff00 #ff8c00';
+    def _get_phrase_prompt(self):
+        return 'describe a scene in a short phrase, between 20 and 85 characters long, that could be the start of a joke or a book title. something like „a horse walks into a bar“.';
+
+    def _get_image_prompt(self):
+        return f'create a humorous picture without text based on the phrase „{self.phrase}“. white background, flat colors, in popart style and landscape format';
 
     def _resize_image(self, image):
         return ImageOps.pad(
@@ -46,16 +57,11 @@ class Generator:
         draw = ImageDraw.Draw(image)
 
         # at white rectangle at the bottom as text background
-        draw.rectangle(
-            xy=[0, 454, 800, 480],
-            fill='white',
-        )
+        draw.rectangle(xy=[0, 454, 800, 480], fill='white')
+        draw.line(xy=[0, 454, 800, 454], fill='black')
 
         # calculate phrase width
-        textlength = draw.textlength(
-            text=self.phrase.upper(),
-            font=font,
-        )
+        textlength = draw.textlength(text=self.phrase.upper(), font=font)
 
         # write phrase
         draw.text(
