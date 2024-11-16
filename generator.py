@@ -39,10 +39,10 @@ class Generator:
         return image
 
     def _get_phrase_prompt(self):
-        return 'describe a scene in a short phrase, between 20 and 85 characters long, that could be the start of a joke or a book title. something like „a horse walks into a bar“. without quotes.'
+        return 'describe a scene in a short phrase, between 20 and 85 characters long, that could be the start of a joke. something like „a horse walks into a bar“. without quotes.'
 
     def _get_image_prompt(self):
-        return f'create a humorous picture without text based on the phrase „{self.phrase}“. white background, in popart or comic style and in landscape format'
+        return f'create a humorous picture without text based on the phrase „{self.phrase}“. white background, pop art style and in landscape format'
 
     def _resize_image(self, image):
         return ImageOps.pad(
