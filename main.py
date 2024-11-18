@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from os import path
 from PIL import Image
 from pathlib import Path

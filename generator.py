@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from dotenv import load_dotenv
 from PIL import Image, ImageOps, ImageFont, ImageDraw
 from openai import OpenAI
