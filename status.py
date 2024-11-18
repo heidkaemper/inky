@@ -11,12 +11,12 @@ ssid = popen('iwconfig wlan0 | grep "ESSID:" | cat').readline().strip('wlan0').s
 quality = popen('iwconfig wlan0 | grep "Link Quality" | cat').readline().strip('wlan0').strip()
 
 # create image instance
-image = Image.new('RGB', (800, 480), (0, 0, 0))
+image = Image.new('RGB', (800, 480))
 draw = ImageDraw.Draw(image)
 
 # headline
 draw.text(
-    xy = [16, 16],
+    xy = [18, 16],
     text = 'Inky Status',
     fill = 'white',
     font = ImageFont.truetype(f'{Path(__file__).parent}/assets/fonts/Oswald-Medium.ttf', 36),
@@ -24,7 +24,7 @@ draw.text(
 
 # status
 draw.multiline_text(
-    xy = [16, 84],
+    xy = [18, 84],
     text = f'{ip}\n{ssid}\n{quality}',
     fill = 'white',
     font = ImageFont.truetype(f'{Path(__file__).parent}/assets/fonts/Oswald-Medium.ttf', 20),
