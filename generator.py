@@ -4,6 +4,7 @@ from openai import OpenAI
 from pathlib import Path
 from requests import get
 from os import getenv
+from random import choice
 
 class Generator:
     def __init__(self):
@@ -39,10 +40,19 @@ class Generator:
         return image
 
     def _get_phrase_prompt(self):
-        return 'generate a dad joke about development that is between 20 and 85 characters long'
+        options = \
+        [
+            'generate a joke that is between 15 and 90 characters long. it should have something to do with internet, computers or smartphones.',
+            'generate a dad joke about javascript that is between 15 and 90 characters long.',
+            'generate a dad joke about php that is between 15 and 90 characters long.',
+            'generate a dad joke about css that is between 15 and 90 characters long.',
+            'generate a dad joke that is between 15 and 90 characters long.',
+        ]
+
+        return choice(options)
 
     def _get_image_prompt(self):
-        return f'create a humorous picture based on the joke „{self.phrase}“. white background, pop art style and in landscape format'
+        return f'create a humorous picture without text based on the joke „{self.phrase}“. white background, pop art style and in landscape format.'
 
     def _resize_image(self, image):
         return ImageOps.pad(
