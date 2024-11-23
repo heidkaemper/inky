@@ -20,7 +20,7 @@ def show_ai():
 
     # show error if something went wrong
     if not path.exists(file_path):
-        file_path = f'{Path(__file__).parent}/assets/images/error.png'
+        file_path = f'{Path(__file__).parent}/assets/images/error.webp'
 
     # load image
     image = Image.open(file_path)
