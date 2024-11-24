@@ -18,5 +18,5 @@ def show_comic():
 
     # show image on inky
     display = Inky()
-    display.set_image(image)
+    display.set_image(image, saturation=0)
     display.show()
