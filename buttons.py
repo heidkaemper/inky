@@ -16,7 +16,7 @@ def handle_event(pin):
         case 5:
             print('showing ai image')
             show_ai()
-        case 5:
+        case 6:
             print('showing comic')
             show_comic()
         case 24:
