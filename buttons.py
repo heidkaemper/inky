@@ -3,6 +3,7 @@
 import signal
 import RPi.GPIO as GPIO
 from ai import show_ai
+from comic import show_comic
 from status import show_status
 
 pins = [5, 6, 16, 24]
@@ -15,6 +16,9 @@ def handle_event(pin):
         case 5:
             print('showing ai image')
             show_ai()
+        case 5:
+            print('showing comic')
+            show_comic()
         case 24:
             print('showing status')
             show_status()
