@@ -44,17 +44,22 @@ class Generator:
     def _get_phrase_prompt(self):
         options = \
         [
-            'generate a joke that is between 15 and 90 characters long. it should have something to do with internet, computers or smartphones.',
-            'generate a dad joke about javascript that is between 15 and 90 characters long.',
-            'generate a dad joke about php that is between 15 and 90 characters long.',
-            'generate a dad joke about css that is between 15 and 90 characters long.',
-            'generate a dad joke that is between 15 and 90 characters long.',
+            'describe a scene with at least two characters. the description should be between 15 and 90 characters long.',
+            'describe a scene where an animal doing human stuff. the description should be between 15 and 90 characters long.',
+            'generate a joke that is between 15 and 90 characters long. it should have something to do with technology, internet, computers or smartphones.',
+            'generate a joke about javascript that is between 15 and 90 characters long.',
+            'generate a joke about php that is between 15 and 90 characters long.',
+            'generate a joke about css that is between 15 and 90 characters long.',
+            'generate a joke that is between 15 and 90 characters long.',
+            'generate a fun fact about politics that is between 15 and 90 characters long.',
+            'generate a fun fact about sports that is between 15 and 90 characters long.',
+            'generate a fun fact about computers that is between 15 and 90 characters long.'
         ]
 
         return choice(options)
 
     def _get_image_prompt(self):
-        return f'create a humorous picture without text based on the joke „{self.phrase}“. white background, pop art style and in landscape format.'
+        return f'create a humorous picture without text based on the phrase „{self.phrase}“. white background, pop art style and in landscape format.'
 
     def _resize_image(self, image):
         return ImageOps.pad(
