@@ -44,7 +44,7 @@ class Generator:
     def _get_phrase_prompt(self):
         options = \
         [
-            'which special holiday or curious event is today? if there are several answers, try to choose the funniest one and then only give that one. the answer should be between 15 and 90 characters long.'
+            'which special holiday or curious event is today? if there are several answers, try to choose the funniest one and then only give that one. the answer should be between 15 and 90 characters long.',
             'describe a scene with at least two characters. the description should be between 15 and 90 characters long.',
             'generate a fun fact that is between 15 and 90 characters long.',
         ]
