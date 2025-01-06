@@ -45,7 +45,7 @@ class Generator:
         options = \
         [
             'which special holiday or curious event is today? if there are several answers, try to choose the funniest and then only give that one. the answer should be between 15 and 75 characters long.',
-            'generate a fun fact that is between 15 and 90 characters long.',
+            'generate a new fun fact that is between 15 and 90 characters long.',
         ]
 
         return choice(options)
